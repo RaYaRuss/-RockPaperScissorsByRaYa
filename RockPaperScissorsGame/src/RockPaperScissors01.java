@@ -13,6 +13,8 @@ public class RockPaperScissors01 {
         System.out.print("Choose [r]ock, [p]aper or [s]cissors: ");
         String playerMove = scanner.nextLine();
         String computerChoice = "";
+        int countPlayer = 0;
+        int countComp = 0;
 
         if (playerMove.equals("r") || playerMove.equals("Rock")) {
             playerMove = ROCK;
@@ -24,7 +26,7 @@ public class RockPaperScissors01 {
             System.out.println("This is an invalid input. Try again please...");
             return;
         }
-        System.out.printf("Your choice is: ", playerMove);
+        System.out.printf("Your choice: %s.%n ", playerMove);
 
         Random random = new Random();
         int computerRandomNumber = random.nextInt(3);
@@ -40,21 +42,25 @@ public class RockPaperScissors01 {
                 computerChoice = "Scissors";
                 break;
         }
-        System.out.printf("The computer's choice is: %s%n", computerChoice);
+        System.out.printf("Computer's choice: %s.%n", computerChoice);
 
         if ((playerMove.equals(ROCK) && computerChoice.equals(SCISSORS)) ||
                 (playerMove.equals(PAPER) && computerChoice.equals(ROCK)) ||
                 (playerMove.equals(SCISSORS) && computerChoice.equals(PAPER))) {
+            countPlayer++;
             System.out.println("You win.");
 
         } else if ((playerMove.equals(SCISSORS) && computerChoice.equals(ROCK)) ||
                 (playerMove.equals(PAPER) && computerChoice.equals(SCISSORS)) ||
                 (playerMove.equals(ROCK) && computerChoice.equals(PAPER))) {
+            countComp++;
             System.out.println("You loose.");
+
 
         } else {
             System.out.println("This game is a draw.");
         }
+        System.out.printf("The score is: %d:%d.%n", countPlayer, countComp);
         }
         }
 
